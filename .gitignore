@@ -1,0 +1,9 @@
+build/
+output/
+downloads/
+images/*.img
+images/*.qcow2
+logs/
+*.log
+*.tmp
+*.swp
