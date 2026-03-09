@@ -1,84 +1,359 @@
+/* ═══════════════════════════════════════════════════════════
+ *  NanoOS Calculator — Light Theme
+ *  All tabs: Calculator · Converter · Scratchpad · History
+ * ═══════════════════════════════════════════════════════════ */
+
+/* ─── Window & Container ─────────────────────────────────── */
+
 window {
-    background-color: #1a1a1a;
+    background-color: #EDF1F7;
 }
+
+.main-container {
+    background-color: #EDF1F7;
+}
+
+/* ─── Display Area (Calculator) ──────────────────────────── */
 
 .display-area {
-    background-color: #1a1a2e;
-    padding: 24px 16px;
-    min-height: 140px;
+    background-color: #FFFFFF;
+    padding: 32px 24px 20px 24px;
+    min-height: 130px;
+    border-bottom-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+    box-shadow: 0 2px 12px rgba(60, 80, 120, 0.07);
 }
 
-.expression-label {
-    font-size: 18px;
-    color: #808090;
-    font-family: monospace;
+.expr-label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #9BA4B5;
+    min-height: 24px;
+    margin-bottom: 4px;
 }
 
 .result-label {
-    font-size: 48px;
-    font-weight: 300;
-    color: #ffffff;
-    font-family: monospace;
+    font-size: 52px;
+    font-weight: 700;
+    color: #1B2838;
+    min-height: 64px;
 }
+
+/* ─── Button Grid ────────────────────────────────────────── */
 
 .calc-grid {
-    padding: 8px;
+    padding: 10px 6px 4px 6px;
 }
 
-.calc-button {
-    border-radius: 50%;
-    font-size: 22px;
-    font-weight: 400;
-    min-height: 64px;
-    min-width: 64px;
-    margin: 4px;
+/* ─── Base Button ────────────────────────────────────────── */
+
+.calc-btn {
+    border-radius: 16px;
+    font-size: 21px;
+    font-weight: 500;
+    min-height: 58px;
+    min-width: 58px;
+    margin: 5px;
     border: none;
+    box-shadow: 0 1px 4px rgba(60, 80, 120, 0.08);
+    transition: all 120ms ease-in-out;
 }
 
-.calc-button.number {
-    background-color: #333340;
-    color: #ffffff;
+/* ─── Number Buttons ─────────────────────────────────────── */
+
+.calc-btn.num {
+    background-color: #FFFFFF;
+    color: #1B2838;
+}
+.calc-btn.num:hover {
+    background-color: #E8ECF2;
+}
+.calc-btn.num:active {
+    background-color: #D5DAE3;
+    box-shadow: 0 0 2px rgba(60, 80, 120, 0.05);
 }
 
-.calc-button.number:hover {
-    background-color: #444455;
+/* ─── Operator Buttons ───────────────────────────────────── */
+
+.calc-btn.oper {
+    background-color: #FFFFFF;
+    color: #1B2838;
+    font-size: 22px;
+}
+.calc-btn.oper:hover { background-color: #E8ECF2; }
+.calc-btn.oper:active { background-color: #D5DAE3; }
+
+/* ─── Accent Buttons (%, AC) ─────────────────────────────── */
+
+.calc-btn.accent {
+    background-color: #FFFFFF;
+    color: #4A9DEC;
+    font-weight: 600;
+}
+.calc-btn.accent:hover { background-color: #E8F2FC; }
+.calc-btn.accent:active { background-color: #D0E6FA; }
+
+/* ─── Function Buttons (⌫, +/−) ─────────────────────────── */
+
+.calc-btn.func {
+    background-color: #FFFFFF;
+    color: #5A6478;
+}
+.calc-btn.func:hover { background-color: #E8ECF2; }
+.calc-btn.func:active { background-color: #D5DAE3; }
+
+/* ─── Parentheses ────────────────────────────────────────── */
+
+.calc-btn.paren {
+    background-color: #FFFFFF;
+    color: #1B2838;
+}
+.calc-btn.paren:hover { background-color: #E8ECF2; }
+
+/* ─── Clear (C) ──────────────────────────────────────────── */
+
+.calc-btn.clear {
+    background-color: #FFFFFF;
+    color: #1B2838;
+    font-weight: 600;
+}
+.calc-btn.clear:hover { background-color: #E8ECF2; }
+
+/* ─── Equals ─────────────────────────────────────────────── */
+
+.calc-btn.equals {
+    background-color: #4A9DEC;
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 700;
+    border-radius: 16px;
+    box-shadow: 0 3px 10px rgba(74, 157, 236, 0.30);
+}
+.calc-btn.equals:hover {
+    background-color: #5EADF5;
+    box-shadow: 0 4px 14px rgba(74, 157, 236, 0.40);
+}
+.calc-btn.equals:active {
+    background-color: #3A8DDC;
+    box-shadow: 0 1px 4px rgba(74, 157, 236, 0.20);
 }
 
-.calc-button.number:active {
-    background-color: #555566;
+/* ─── Swap button in numpad ──────────────────────────────── */
+
+.calc-btn.swap-pad {
+    background-color: #4A9DEC;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(74, 157, 236, 0.30);
+}
+.calc-btn.swap-pad:hover { background-color: #5EADF5; }
+.calc-btn.swap-pad:active { background-color: #3A8DDC; }
+
+/* ═══════════════════════════════════════════════════════════
+ *  Bottom Tab Bar
+ * ═══════════════════════════════════════════════════════════ */
+
+.tab-bar {
+    background-color: #FFFFFF;
+    padding: 4px 8px 8px 8px;
+    border-top: 1px solid #E4E8EE;
+    min-height: 48px;
 }
 
-.calc-button.operator {
-    background-color: #5090ff;
-    color: #ffffff;
+.tab-btn {
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    font-size: 22px;
+    color: #9BA4B5;
+    padding: 8px 12px;
+    min-height: 40px;
+    margin: 0 4px;
+    transition: all 150ms ease;
+}
+.tab-btn:hover { background-color: #F0F4FA; }
+.tab-btn.tab-active { color: #4A9DEC; }
+
+/* ═══════════════════════════════════════════════════════════
+ *  Unit Converter
+ * ═══════════════════════════════════════════════════════════ */
+
+.conv-view {
+    background-color: #EDF1F7;
 }
 
-.calc-button.operator:hover {
-    background-color: #60a0ff;
+/* ─── View Title (shared) ────────────────────────────────── */
+
+.view-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1B2838;
+    padding: 16px 24px 8px 24px;
 }
 
-.calc-button.operator:active {
-    background-color: #4080ee;
+/* ─── Category Pills ─────────────────────────────────────── */
+
+.cat-pills {
+    padding: 4px 16px 8px 16px;
 }
 
-.calc-button.function {
-    background-color: #2a2a35;
-    color: #a0a0b0;
+.cat-pill {
+    background-color: #FFFFFF;
+    color: #5A6478;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 32px;
+    box-shadow: 0 1px 3px rgba(60, 80, 120, 0.06);
+    transition: all 150ms ease;
+}
+.cat-pill:hover {
+    background-color: #E8F2FC;
+    color: #4A9DEC;
+}
+.cat-pill.cat-active {
+    background-color: #4A9DEC;
+    color: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(74, 157, 236, 0.30);
 }
 
-.calc-button.function:hover {
-    background-color: #3a3a45;
+/* ─── Conversion Row ─────────────────────────────────────── */
+
+.conv-row {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    padding: 12px 20px;
+    margin: 4px 16px;
+    box-shadow: 0 1px 4px rgba(60, 80, 120, 0.06);
 }
 
-.calc-button.equals {
-    background-color: #40c060;
-    color: #ffffff;
+/* ─── Dropdown ───────────────────────────────────────────── */
+
+.conv-drop {
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    color: #4A9DEC;
+    font-weight: 600;
+    min-height: 28px;
 }
 
-.calc-button.equals:hover {
-    background-color: #50d070;
+/* ─── Value & Symbol ─────────────────────────────────────── */
+
+.conv-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1B2838;
 }
 
-.calc-button.equals:active {
-    background-color: #30b050;
+.conv-sym {
+    font-size: 16px;
+    font-weight: 500;
+    color: #9BA4B5;
+    margin-bottom: 4px;
+}
+
+/* ─── Swap Button ────────────────────────────────────────── */
+
+.swap-btn {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #4A9DEC;
+    padding: 4px 16px;
+    min-height: 36px;
+    border-radius: 12px;
+    transition: all 150ms ease;
+}
+.swap-btn:hover {
+    background-color: #E8F2FC;
+}
+
+/* ─── Converter Numpad ───────────────────────────────────── */
+
+.conv-grid {
+    padding: 6px 6px 4px 6px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+ *  Scratchpad
+ * ═══════════════════════════════════════════════════════════ */
+
+.scratch-view {
+    background-color: #EDF1F7;
+}
+
+.scratch-header {
+    padding: 16px 24px 8px 24px;
+}
+
+.scratch-clear-btn {
+    background-color: #FFFFFF;
+    color: #E05555;
+    border: none;
+    border-radius: 12px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(60, 80, 120, 0.06);
+    transition: all 150ms ease;
+}
+.scratch-clear-btn:hover {
+    background-color: #FDE8E8;
+}
+
+.scratch-text {
+    background-color: #FFFFFF;
+    color: #1B2838;
+    font-size: 16px;
+    font-family: system-ui, -apple-system, sans-serif;
+    border-radius: 16px;
+    margin: 8px 16px 16px 16px;
+    padding: 4px;
+    box-shadow: 0 1px 4px rgba(60, 80, 120, 0.06);
+}
+
+/* ═══════════════════════════════════════════════════════════
+ *  History
+ * ═══════════════════════════════════════════════════════════ */
+
+.hist-list {
+    padding: 0 16px 16px 16px;
+}
+
+.hist-row {
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    padding: 14px 20px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px rgba(60, 80, 120, 0.06);
+}
+
+.hist-expr {
+    font-size: 14px;
+    font-weight: 400;
+    color: #9BA4B5;
+    margin-bottom: 2px;
+}
+
+.hist-result {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1B2838;
+}
+
+.hist-empty {
+    font-size: 16px;
+    color: #9BA4B5;
+    padding: 48px 24px;
+}
+
+/* ─── Placeholder ────────────────────────────────────────── */
+
+.placeholder-sub {
+    font-size: 14px;
+    color: #9BA4B5;
 }
