@@ -1,0 +1,7 @@
+config BR2_PACKAGE_NANO_POWER
+	bool "nano-power"
+	depends on BR2_PACKAGE_DBUS
+	select BR2_PACKAGE_LIBGLIB2
+	help
+	  NanoOS power management service.
+	  Monitors battery status and handles power events via D-Bus.

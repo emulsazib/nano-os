@@ -1,0 +1,11 @@
+config BR2_PACKAGE_NANO_SHELL
+	bool "nano-shell"
+	depends on BR2_PACKAGE_LIBGTK3 || BR2_PACKAGE_GTK4
+	depends on BR2_PACKAGE_WAYLAND
+	select BR2_PACKAGE_LIBGLIB2
+	select BR2_PACKAGE_JSON_GLIB
+	select BR2_PACKAGE_CAIRO
+	select BR2_PACKAGE_PANGO
+	help
+	  NanoOS mobile shell UI.
+	  Provides the home screen, app launcher, and system panels.

@@ -1,0 +1,8 @@
+config BR2_PACKAGE_NANO_NOTIF
+	bool "nano-notif"
+	depends on BR2_PACKAGE_DBUS
+	select BR2_PACKAGE_LIBGLIB2
+	help
+	  NanoOS notification daemon.
+	  Implements org.freedesktop.Notifications and org.nano.Notifications
+	  D-Bus interfaces.

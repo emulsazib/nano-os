@@ -1,0 +1,11 @@
+config BR2_PACKAGE_NANO_COMPOSITOR
+	bool "nano-compositor"
+	depends on BR2_PACKAGE_WLROOTS
+	depends on BR2_PACKAGE_WAYLAND
+	depends on BR2_PACKAGE_LIBINPUT
+	depends on BR2_PACKAGE_LIBXKBCOMMON
+	select BR2_PACKAGE_LIBDRM
+	select BR2_PACKAGE_MESA3D
+	help
+	  NanoOS Wayland compositor based on wlroots.
+	  Provides the graphical display server for NanoOS.

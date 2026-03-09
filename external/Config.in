@@ -1,0 +1,5 @@
+source "$BR2_EXTERNAL_NANO_PATH/package/nano-compositor/Config.in"
+source "$BR2_EXTERNAL_NANO_PATH/package/nano-shell/Config.in"
+source "$BR2_EXTERNAL_NANO_PATH/package/nano-settings/Config.in"
+source "$BR2_EXTERNAL_NANO_PATH/package/nano-notif/Config.in"
+source "$BR2_EXTERNAL_NANO_PATH/package/nano-power/Config.in"

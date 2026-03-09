@@ -1,0 +1,8 @@
+config BR2_PACKAGE_NANO_SETTINGS
+	bool "nano-settings"
+	depends on BR2_PACKAGE_DBUS
+	select BR2_PACKAGE_LIBGLIB2
+	select BR2_PACKAGE_JSON_GLIB
+	help
+	  NanoOS settings daemon.
+	  Provides D-Bus interface for system settings management.

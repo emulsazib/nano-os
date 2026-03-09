@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Clock
+Comment=Clock, Stopwatch, and Timer
+Exec=nano-clock
+Icon=clock
+Categories=Utility;
+StartupNotify=true

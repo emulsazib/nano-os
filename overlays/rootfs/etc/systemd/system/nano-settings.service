@@ -1,0 +1,15 @@
+[Unit]
+Description=NanoOS Settings Daemon
+After=dbus.service
+Requires=dbus.service
+
+[Service]
+Type=dbus
+BusName=org.nano.Settings
+User=root
+Environment=XDG_RUNTIME_DIR=/run/user/0
+ExecStart=/usr/bin/nano-settings-daemon
+Restart=on-failure
+
+[Install]
+WantedBy=nano-session.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=NanoOS Notification Daemon
+After=dbus.service
+Requires=dbus.service
+
+[Service]
+Type=dbus
+BusName=org.nano.Notifications
+User=root
+Environment=XDG_RUNTIME_DIR=/run/user/0
+Environment=WAYLAND_DISPLAY=wayland-0
+ExecStart=/usr/bin/nano-notif-daemon
+Restart=on-failure
+
+[Install]
+WantedBy=nano-session.target

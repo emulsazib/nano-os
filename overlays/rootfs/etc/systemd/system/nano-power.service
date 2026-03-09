@@ -1,0 +1,14 @@
+[Unit]
+Description=NanoOS Power Management Service
+After=dbus.service systemd-logind.service
+Requires=dbus.service
+
+[Service]
+Type=dbus
+BusName=org.nano.Power
+User=root
+ExecStart=/usr/bin/nano-power-daemon
+Restart=on-failure
+
+[Install]
+WantedBy=nano-session.target

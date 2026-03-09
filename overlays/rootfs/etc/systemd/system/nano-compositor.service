@@ -1,0 +1,20 @@
+[Unit]
+Description=NanoOS Compositor
+After=systemd-logind.service
+Requires=systemd-logind.service
+ConditionPathExists=/usr/bin/nano-compositor
+
+[Service]
+Type=notify
+User=root
+Environment=XDG_RUNTIME_DIR=/run/user/0
+Environment=WLR_BACKENDS=drm
+Environment=WLR_RENDERER=gles2
+ExecStartPre=/bin/mkdir -p /run/user/0
+ExecStartPre=/bin/chmod 0700 /run/user/0
+ExecStart=/usr/bin/nano-compositor
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=nano-session.target

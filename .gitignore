@@ -3,7 +3,16 @@ output/
 downloads/
 images/*.img
 images/*.qcow2
+images/*.ext4
+images/Image
+images/*.dtb
 logs/
 *.log
 *.tmp
 *.swp
+*.o
+*.so
+.venv/
+*.pyc
+__pycache__/
+buildroot/output/

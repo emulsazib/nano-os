@@ -1,0 +1,18 @@
+[Unit]
+Description=NanoOS Shell
+After=nano-compositor.service
+Requires=nano-compositor.service
+ConditionPathExists=/usr/bin/nano-shell
+
+[Service]
+Type=simple
+User=root
+Environment=XDG_RUNTIME_DIR=/run/user/0
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=GDK_BACKEND=wayland
+ExecStart=/usr/bin/nano-shell
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=nano-session.target

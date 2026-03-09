@@ -1,0 +1,207 @@
+/*
+ * NanoOS Shell - Mobile CSS Theme
+ * Designed for 720x1440 portrait display
+ * Dark theme
+ */
+
+/* ── Global ────────────────────────────────────────────────── */
+window {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* ── Status Bar ────────────────────────────────────────────── */
+.status-bar {
+    background-color: rgba(18, 18, 18, 0.85);
+    min-height: 48px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.status-bar label {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.status-clock {
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.status-indicator {
+    font-size: 13px;
+    color: #e0e0e0;
+    margin-left: 12px;
+}
+
+/* ── App Launcher ──────────────────────────────────────────── */
+.launcher {
+    background-color: transparent;
+    padding-top: 56px;   /* clear status bar */
+    padding-bottom: 40px; /* clear home indicator */
+}
+
+.launcher scrolledwindow {
+    background-color: transparent;
+}
+
+.launcher-grid {
+    background-color: transparent;
+    padding: 24px 12px;
+}
+
+.launcher-grid flowboxchild {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 8px 4px;
+    min-width: 80px;
+    min-height: 96px;
+}
+
+.launcher-grid flowboxchild:selected {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+}
+
+.launcher-grid flowboxchild:active {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+}
+
+/* ── App Entry ─────────────────────────────────────────────── */
+.app-entry {
+    min-width: 80px;
+    min-height: 96px;
+    padding: 8px 4px;
+}
+
+.app-icon {
+    min-width: 56px;
+    min-height: 56px;
+    border-radius: 28px;
+    margin-bottom: 6px;
+}
+
+.app-icon-fallback {
+    min-width: 56px;
+    min-height: 56px;
+    border-radius: 28px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+/* Fallback icon colors */
+.app-icon-color-0 { background-color: #e91e63; }
+.app-icon-color-1 { background-color: #9c27b0; }
+.app-icon-color-2 { background-color: #3f51b5; }
+.app-icon-color-3 { background-color: #03a9f4; }
+.app-icon-color-4 { background-color: #009688; }
+.app-icon-color-5 { background-color: #4caf50; }
+.app-icon-color-6 { background-color: #ff9800; }
+.app-icon-color-7 { background-color: #795548; }
+
+.app-label {
+    color: #e0e0e0;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+/* ── Clock Widget ──────────────────────────────────────────── */
+.clock-large {
+    font-size: 64px;
+    font-weight: 200;
+    color: #ffffff;
+    margin-top: 60px;
+    margin-bottom: 4px;
+}
+
+.clock-date {
+    font-size: 16px;
+    font-weight: 400;
+    color: #b0b0b0;
+    margin-bottom: 32px;
+}
+
+/* ── Notification Banner ───────────────────────────────────── */
+.notification-area {
+    margin-top: 52px; /* just below status bar */
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.notification-banner {
+    background-color: rgba(50, 50, 50, 0.95);
+    border-radius: 16px;
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    min-height: 48px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.notification-app-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #a0a0a0;
+    margin-bottom: 2px;
+}
+
+.notification-summary {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.notification-body {
+    font-size: 13px;
+    font-weight: 400;
+    color: #cccccc;
+}
+
+/* Notification slide-in transition */
+revealer {
+    transition-duration: 300ms;
+}
+
+/* ── Home Indicator ────────────────────────────────────────── */
+.home-indicator {
+    min-height: 5px;
+    min-width: 134px;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.home-indicator-area {
+    min-height: 24px;
+    padding-bottom: 4px;
+}
+
+/* ── Swipe Area ────────────────────────────────────────────── */
+.swipe-area {
+    min-height: 32px;
+}
+
+/* ── Scrollbar styling for touch ───────────────────────────── */
+scrollbar {
+    opacity: 0;
+}
+
+scrollbar.hovering,
+scrollbar.dragging {
+    opacity: 0.6;
+}
+
+/* ── General touch-friendly sizing ─────────────────────────── */
+button {
+    min-height: 48px;
+    min-width: 48px;
+}
