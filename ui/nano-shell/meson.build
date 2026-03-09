@@ -8,12 +8,23 @@ project('nano-shell', 'c',
 
 gnome = import('gnome')
 
-gtk4 = dependency('gtk4', required: true)
-adwaita = dependency('libadwaita-1', required: false)
+gtk4 = dependency('gtk4', required: false)
+gtk3 = dependency('gtk+-3.0', required: false)
 
-# If libadwaita not available, still build with just GTK4
-deps = [gtk4]
+deps = []
 c_args = []
+
+if gtk4.found()
+  deps += gtk4
+  c_args += '-DUSE_GTK4=1'
+elif gtk3.found()
+  deps += gtk3
+  c_args += '-DUSE_GTK3=1'
+else
+  error('Either gtk4 or gtk+-3.0 is required')
+endif
+
+adwaita = dependency('libadwaita-1', required: false)
 if adwaita.found()
   deps += adwaita
   c_args += '-DHAVE_LIBADWAITA=1'
@@ -28,7 +39,6 @@ if json_glib.found()
   c_args += '-DHAVE_JSON_GLIB=1'
 endif
 
-# Compile CSS as GResource
 resources = gnome.compile_resources('nano-shell-resources',
   'data/nano-shell.gresource.xml',
   source_dir: 'data')

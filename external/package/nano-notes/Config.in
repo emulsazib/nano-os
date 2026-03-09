@@ -1,0 +1,8 @@
+config BR2_PACKAGE_NANO_NOTES
+	bool "nano-notes"
+	depends on BR2_PACKAGE_LIBGTK3
+	depends on BR2_PACKAGE_WAYLAND
+	select BR2_PACKAGE_LIBGLIB2
+	help
+	  NanoOS notes application.
+	  Simple note-taking app with file-backed storage.

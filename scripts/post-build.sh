@@ -22,7 +22,7 @@ ln -sf ../nano-session.target "$SYSTEMD_DIR/graphical.target.wants/nano-session.
 
 # Enable nano services under nano-session.target
 mkdir -p "$SYSTEMD_DIR/nano-session.target.wants"
-for svc in nano-compositor.service nano-shell.service nano-settings.service nano-notif.service nano-power.service; do
+for svc in nano-compositor.service nano-shell.service nano-settings.service nano-notif.service nano-power.service nano-net.service; do
     ln -sf "../$svc" "$SYSTEMD_DIR/nano-session.target.wants/$svc"
 done
 

@@ -1,0 +1,7 @@
+config BR2_PACKAGE_NANO_NET
+	bool "nano-net"
+	depends on BR2_PACKAGE_DBUS
+	select BR2_PACKAGE_LIBGLIB2
+	help
+	  NanoOS network status service.
+	  Monitors network interfaces and reports status via D-Bus.

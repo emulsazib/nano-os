@@ -1,0 +1,14 @@
+[Unit]
+Description=NanoOS Network Status Service
+After=dbus.service systemd-networkd.service
+Requires=dbus.service
+
+[Service]
+Type=dbus
+BusName=org.nano.Network
+User=root
+ExecStart=/usr/bin/nano-net-daemon
+Restart=on-failure
+
+[Install]
+WantedBy=nano-session.target

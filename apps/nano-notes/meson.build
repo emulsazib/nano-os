@@ -1,4 +1,4 @@
-project('nano-clock', 'c',
+project('nano-notes', 'c',
   version : '0.1',
   default_options : ['c_std=c11', 'warning_level=2'],
 )
@@ -25,7 +25,11 @@ if adw_dep.found()
   deps += [adw_dep]
 endif
 
-executable('nano-clock',
+glib_dep = dependency('glib-2.0')
+gio_dep = dependency('gio-2.0')
+deps += [glib_dep, gio_dep]
+
+executable('nano-notes',
   sources : ['src/main.c'],
   c_args : c_args,
   dependencies : deps,
@@ -33,10 +37,10 @@ executable('nano-clock',
   install_dir : get_option('bindir'),
 )
 
-install_data('data/org.nano.clock.desktop',
+install_data('data/org.nano.notes.desktop',
   install_dir : get_option('datadir') / 'applications',
 )
 
 install_data('data/style.css',
-  install_dir : get_option('datadir') / 'nano-clock',
+  install_dir : get_option('datadir') / 'nano-notes',
 )

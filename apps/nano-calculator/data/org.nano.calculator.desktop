@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Calculator
+Comment=Basic calculator
+Exec=nano-calculator
+Icon=accessories-calculator
+Categories=Utility;
+StartupNotify=true
