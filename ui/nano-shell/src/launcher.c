@@ -1,7 +1,9 @@
 #include "launcher.h"
 #include "app-entry.h"
 #include "clock.h"
+#ifdef __linux__
 #include <gio/gdesktopappinfo.h>
+#endif
 
 #define LAUNCHER_COLUMNS 4
 
@@ -103,13 +105,13 @@ add_builtin_apps(GtkFlowBox *grid)
 static gboolean
 populate_from_desktop_files(GtkFlowBox *grid)
 {
+#ifdef __linux__
     GList *apps = g_app_info_get_all();
     gboolean found_any = FALSE;
 
     for (GList *l = apps; l != NULL; l = l->next) {
         GAppInfo *info = G_APP_INFO(l->data);
 
-        /* Skip apps that should not be shown */
         if (!g_app_info_should_show(info)) {
             continue;
         }
@@ -123,6 +125,10 @@ populate_from_desktop_files(GtkFlowBox *grid)
 
     g_list_free_full(apps, g_object_unref);
     return found_any;
+#else
+    (void)grid;
+    return FALSE;
+#endif
 }
 
 /* ── Public ────────────────────────────────────────────────── */

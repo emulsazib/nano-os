@@ -46,10 +46,10 @@ main(int argc, char *argv[])
 {
 #ifdef HAVE_LIBADWAITA
     AdwApplication *app = adw_application_new("org.nano.shell",
-                                               G_APPLICATION_DEFAULT_FLAGS);
+                                               G_APPLICATION_NON_UNIQUE);
 #else
     GtkApplication *app = gtk_application_new("org.nano.shell",
-                                               G_APPLICATION_DEFAULT_FLAGS);
+                                               G_APPLICATION_NON_UNIQUE);
 #endif
 
     g_signal_connect(app, "activate", G_CALLBACK(on_activate), NULL);

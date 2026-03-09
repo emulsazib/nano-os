@@ -1,5 +1,7 @@
 #include "app-entry.h"
+#ifdef __linux__
 #include <gio/gdesktopappinfo.h>
+#endif
 
 struct _NanoAppEntry {
     GtkBox   parent_instance;

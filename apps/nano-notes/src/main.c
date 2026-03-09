@@ -1,5 +1,6 @@
 #include <gtk/gtk.h>
 #include <glib.h>
+#include <glib/gstdio.h>
 #include <gio/gio.h>
 #include <string.h>
 #include <time.h>
@@ -441,7 +442,7 @@ int main(int argc, char *argv[]) {
     adw_init();
 #endif
 
-    notes.app = gtk_application_new(APP_ID, G_APPLICATION_DEFAULT_FLAGS);
+    notes.app = gtk_application_new(APP_ID, G_APPLICATION_NON_UNIQUE);
     g_signal_connect(notes.app, "activate", G_CALLBACK(on_activate), NULL);
 
     int status = g_application_run(G_APPLICATION(notes.app), argc, argv);

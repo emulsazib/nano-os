@@ -423,7 +423,7 @@ main (int argc, char *argv[])
     adw_init ();
 #endif
 
-    app_state.app = gtk_application_new (APP_ID, G_APPLICATION_DEFAULT_FLAGS);
+    app_state.app = gtk_application_new (APP_ID, G_APPLICATION_NON_UNIQUE);
     g_signal_connect (app_state.app, "activate", G_CALLBACK (on_activate), NULL);
 
     int status = g_application_run (G_APPLICATION (app_state.app), argc, argv);
