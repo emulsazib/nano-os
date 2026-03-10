@@ -236,6 +236,61 @@ The QEMU launcher (`scripts/run-qemu.sh`) provides:
 | Storage | `virtio-blk-pci` (rootfs.ext4) |
 | RNG | `virtio-rng-pci` |
 
+## Device Configuration
+
+### Host Device
+
+The host machine is used for development, cross-compilation, and running NanoOS in QEMU emulation.
+
+| Property | Specification |
+|----------|---------------|
+| Architecture | x86_64 or aarch64 (native ARM64) |
+| OS | Ubuntu 22.04+ / Debian-based Linux |
+| Role | Development, cross-compilation, QEMU emulation |
+| CPU | Multi-core (4+ cores recommended) |
+| RAM | 8 GB minimum (16 GB recommended for parallel builds) |
+| Disk | 20 GB+ free space for Buildroot toolchain and build artifacts |
+| Emulation | QEMU `aarch64 virt` machine with Cortex-A72, VirtIO peripherals |
+| Display | GTK+GL for graphical QEMU output, or headless via serial console |
+| Network | User-mode networking with SSH port forwarding (host 2222 → guest 22) |
+
+### Clinic Device (Mobile / ARM Architecture)
+
+NanoOS targets mobile and embedded ARM devices used in clinical and field environments.
+
+#### Mobile Device
+
+| Property | Specification |
+|----------|---------------|
+| Architecture | ARM64 (aarch64) |
+| Form Factor | Handheld / tablet / mobile terminal |
+| Display | Touchscreen with DRM/KMS, auto-rotate via IIO accelerometer |
+| Input | Multi-touch capacitive touchscreen, on-screen keyboard |
+| GPU | Mali (Panfrost/Lima) or Broadcom VideoCore (VC4) via DRM |
+| Audio | PipeWire at 48 kHz / 1024 quantum for low-latency playback |
+| Connectivity | WiFi (802.11), Bluetooth, USB gadget mode |
+| Power | Battery-backed with sysfs monitoring, suspend-to-RAM, idle timeout (5 min) |
+| Sensors | Ambient light (IIO), proximity, accelerometer (orientation) |
+| Feedback | LED indicator (blink control), haptic vibration motor |
+| Backlight | sysfs-based brightness control (0–255) |
+
+#### ARM Architecture Device (Raspberry Pi 4 / SBC)
+
+| Property | Specification |
+|----------|---------------|
+| Architecture | ARM64 (aarch64), Cortex-A72 quad-core |
+| Target Board | Raspberry Pi 4 Model B (primary), generic ARM64 SBCs |
+| RAM | 2 GB – 8 GB (depending on board variant) |
+| Storage | microSD card or eMMC with ext4 root filesystem |
+| Display | HDMI or DSI touchscreen panel via DRM/KMS |
+| GPU | Broadcom VideoCore VI (VC4 driver) |
+| Network | Gigabit Ethernet, WiFi 802.11ac, Bluetooth 5.0 |
+| USB | USB 3.0 / USB 2.0 host ports, USB-C power |
+| Boot | U-Boot or direct kernel boot with device tree |
+| Peripherals | GPIO, I2C, SPI for external sensors and actuators |
+| Power | 5V / 3A USB-C supply, no battery (external UPS optional) |
+| Kernel Fragments | `base.config` + `mobile.config` + `wayland.config` merged with board defconfig |
+
 ## Kernel Configuration
 
 The kernel is built from the standard arm64 `defconfig` with three config fragment overlays merged automatically by Buildroot:
