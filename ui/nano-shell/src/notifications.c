@@ -1,4 +1,5 @@
 #include "notifications.h"
+#include <math.h>
 #include <gio/gio.h>
 
 /*

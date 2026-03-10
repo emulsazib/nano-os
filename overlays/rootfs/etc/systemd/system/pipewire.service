@@ -1,15 +1,15 @@
 [Unit]
-Description=NanoOS Notification Daemon
-After=dbus.service
+Description=PipeWire Multimedia Service
+After=nano-compositor.service
 Requires=dbus.service
 
 [Service]
 Type=simple
 User=root
 Environment=XDG_RUNTIME_DIR=/run/user/0
-Environment=WAYLAND_DISPLAY=wayland-0
-ExecStart=/usr/bin/nano-notif-daemon
+ExecStart=/usr/bin/pipewire
 Restart=on-failure
+RestartSec=2
 
 [Install]
 WantedBy=nano-session.target

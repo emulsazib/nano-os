@@ -5,7 +5,7 @@ Requires=systemd-logind.service
 ConditionPathExists=/usr/bin/nano-compositor
 
 [Service]
-Type=notify
+Type=simple
 User=root
 Environment=XDG_RUNTIME_DIR=/run/user/0
 Environment=WLR_BACKENDS=drm

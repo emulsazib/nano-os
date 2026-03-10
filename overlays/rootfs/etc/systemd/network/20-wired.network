@@ -1,0 +1,14 @@
+# NanoOS: DHCP on any wired Ethernet interface
+# This covers QEMU's virtio-net and real Ethernet adapters
+
+[Match]
+Type=ether
+
+[Network]
+DHCP=yes
+IPv6AcceptRA=yes
+
+[DHCPv4]
+UseDNS=yes
+UseNTP=yes
+UseHostname=no

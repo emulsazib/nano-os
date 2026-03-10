@@ -1,0 +1,16 @@
+# NanoOS: DHCP on any wireless interface
+# Used when connecting to WiFi networks via iwd
+
+[Match]
+Type=wlan
+
+[Network]
+DHCP=yes
+IPv6AcceptRA=yes
+IgnoreCarrierLoss=3s
+
+[DHCPv4]
+UseDNS=yes
+UseNTP=yes
+UseHostname=no
+RouteMetric=600

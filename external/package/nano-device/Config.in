@@ -1,0 +1,8 @@
+config BR2_PACKAGE_NANO_DEVICE
+	bool "nano-device"
+	select BR2_PACKAGE_LIBGLIB2
+	select BR2_PACKAGE_DBUS
+	help
+	  NanoOS device abstraction daemon.
+	  Provides D-Bus interfaces for backlight, LED, haptic,
+	  orientation, and sensor access.

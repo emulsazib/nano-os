@@ -1,0 +1,15 @@
+[Unit]
+Description=NanoOS Device Abstraction Daemon
+After=dbus.service systemd-udev-settle.service
+Requires=dbus.service
+
+[Service]
+Type=dbus
+BusName=org.nano.Device
+User=root
+ExecStart=/usr/bin/nano-device-daemon
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=nano-session.target

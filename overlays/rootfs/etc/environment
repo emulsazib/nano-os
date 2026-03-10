@@ -1,4 +1,15 @@
+# NanoOS system environment
+# These are loaded by systemd and PAM for all sessions
+
+# XDG runtime (single-user mobile)
 XDG_RUNTIME_DIR=/run/user/0
+XDG_SESSION_TYPE=wayland
+XDG_CURRENT_DESKTOP=NanoOS
+XDG_SESSION_DESKTOP=NanoOS
+XDG_DATA_DIRS=/usr/share:/usr/local/share
+XDG_CONFIG_DIRS=/etc/xdg
+
+# Wayland display
 WAYLAND_DISPLAY=wayland-0
 GDK_BACKEND=wayland
 CLUTTER_BACKEND=wayland
@@ -6,4 +17,10 @@ SDL_VIDEODRIVER=wayland
 QT_QPA_PLATFORM=wayland
 MOZ_ENABLE_WAYLAND=1
 _JAVA_AWT_WM_NONREPARENTING=1
+
+# PipeWire audio
+PIPEWIRE_RUNTIME_DIR=/run/user/0
+
+# NanoOS
 NANO_OS_VERSION=0.1.0
+NANO_HOME=/etc/nano

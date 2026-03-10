@@ -1,0 +1,68 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+  "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node name="/org/nano/Device">
+  <interface name="org.nano.Device.Backlight">
+    <method name="GetBrightness">
+      <arg direction="out" type="i" name="brightness"/>
+    </method>
+    <method name="SetBrightness">
+      <arg direction="in" type="i" name="brightness"/>
+    </method>
+    <method name="GetMaxBrightness">
+      <arg direction="out" type="i" name="max_brightness"/>
+    </method>
+    <signal name="BrightnessChanged">
+      <arg type="i" name="brightness"/>
+    </signal>
+  </interface>
+
+  <interface name="org.nano.Device.LED">
+    <method name="SetLED">
+      <arg direction="in" type="s" name="led_name"/>
+      <arg direction="in" type="i" name="brightness"/>
+    </method>
+    <method name="GetLEDs">
+      <arg direction="out" type="a(si)" name="leds"/>
+    </method>
+    <method name="BlinkLED">
+      <arg direction="in" type="s" name="led_name"/>
+      <arg direction="in" type="i" name="on_ms"/>
+      <arg direction="in" type="i" name="off_ms"/>
+    </method>
+  </interface>
+
+  <interface name="org.nano.Device.Haptic">
+    <method name="Vibrate">
+      <arg direction="in" type="i" name="duration_ms"/>
+    </method>
+    <method name="VibratePattern">
+      <arg direction="in" type="ai" name="pattern_ms"/>
+    </method>
+  </interface>
+
+  <interface name="org.nano.Device.Orientation">
+    <method name="GetOrientation">
+      <arg direction="out" type="s" name="orientation"/>
+    </method>
+    <method name="LockOrientation">
+      <arg direction="in" type="s" name="orientation"/>
+    </method>
+    <method name="UnlockOrientation"/>
+    <property name="AutoRotate" type="b" access="readwrite"/>
+    <signal name="OrientationChanged">
+      <arg type="s" name="orientation"/>
+    </signal>
+  </interface>
+
+  <interface name="org.nano.Device.Sensors">
+    <method name="GetAmbientLight">
+      <arg direction="out" type="d" name="lux"/>
+    </method>
+    <method name="GetAccelerometer">
+      <arg direction="out" type="(ddd)" name="xyz"/>
+    </method>
+    <method name="GetProximity">
+      <arg direction="out" type="b" name="near"/>
+    </method>
+  </interface>
+</node>

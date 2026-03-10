@@ -1,0 +1,64 @@
+# NanoOS udev rules for mobile devices
+# These rules set proper permissions and trigger actions for mobile hardware
+
+# ── Input Devices ────────────────────────────────────────────
+# Grant root access to all input devices (touchscreen, keyboard, mouse)
+SUBSYSTEM=="input", GROUP="input", MODE="0660"
+
+# Tag touchscreens for libinput
+SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_TOUCHSCREEN}=="1", \
+    TAG+="nano-touchscreen", MODE="0660"
+
+# Tag keyboards
+SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_KEYBOARD}=="1", \
+    TAG+="nano-keyboard"
+
+# ── DRM / GPU ────────────────────────────────────────────────
+# GPU device permissions (for Wayland compositor)
+SUBSYSTEM=="drm", KERNEL=="card*", MODE="0666"
+SUBSYSTEM=="drm", KERNEL=="renderD*", MODE="0666"
+
+# ── Backlight ────────────────────────────────────────────────
+# Allow write access to backlight brightness
+SUBSYSTEM=="backlight", ACTION=="add", \
+    RUN+="/bin/chmod 0666 /sys/class/backlight/%k/brightness"
+SUBSYSTEM=="backlight", ACTION=="add", \
+    RUN+="/bin/chmod 0666 /sys/class/backlight/%k/bl_power"
+
+# ── LEDs ─────────────────────────────────────────────────────
+# Allow write access to LED brightness and trigger
+SUBSYSTEM=="leds", ACTION=="add", \
+    RUN+="/bin/chmod 0666 /sys/class/leds/%k/brightness"
+SUBSYSTEM=="leds", ACTION=="add", \
+    RUN+="/bin/chmod 0666 /sys/class/leds/%k/trigger"
+
+# ── Power Supply / Battery ───────────────────────────────────
+SUBSYSTEM=="power_supply", ACTION=="change", \
+    TAG+="nano-battery", ENV{POWER_SUPPLY_STATUS}=="Discharging", \
+    RUN+="/bin/systemctl --no-block start nano-power-low-check.service"
+
+# ── Vibration Motor ──────────────────────────────────────────
+SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT}=="1", \
+    ATTRS{name}=="*vibra*", TAG+="nano-vibration", MODE="0666"
+SUBSYSTEM=="leds", KERNEL=="*vibrator*", MODE="0666"
+
+# ── Sound ────────────────────────────────────────────────────
+SUBSYSTEM=="sound", MODE="0666"
+
+# ── Sensors (IIO) ────────────────────────────────────────────
+SUBSYSTEM=="iio", MODE="0666"
+SUBSYSTEM=="iio", KERNEL=="iio:device*", ATTR{name}=="*accel*", \
+    TAG+="nano-accelerometer"
+SUBSYSTEM=="iio", KERNEL=="iio:device*", ATTR{name}=="*gyro*", \
+    TAG+="nano-gyroscope"
+SUBSYSTEM=="iio", KERNEL=="iio:device*", ATTR{name}=="*light*", \
+    TAG+="nano-lightsensor"
+
+# ── USB Gadget (for file transfer / ADB-like) ────────────────
+SUBSYSTEM=="usb", MODE="0666"
+
+# ── RTC ──────────────────────────────────────────────────────
+SUBSYSTEM=="rtc", MODE="0666"
+
+# ── Virtual Console ──────────────────────────────────────────
+KERNEL=="tty[0-9]*", MODE="0620", GROUP="tty"
